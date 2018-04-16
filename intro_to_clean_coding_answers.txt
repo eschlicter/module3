@@ -2,34 +2,135 @@
 
 > In your own words, explain what clean code is and why it is important.
 
-A: Clean code is code that is easy to understand (using comments only when necessary) and easy to maintain. Clean code aims to reduce repetition. 
+A: Clean code is code that is easy to understand (using comments only when necessary) and easy to maintain. Clean code aims to reduce repetition.
 
 > Read this article about Toyota and their use of bad code. Although you may not yet understand all of the topics discussed, think about another commonly used object that relies on computers and explain what would happen if the code was not created to an acceptable standard.
 
-A: The very first thing that comes to mind when reading this article is the fact that planes and airports use so many various forms of technology. If there was a bug that went undiscovered, it is possible that planes could crash/have difficulty landing. Providing clean, secure code is highly important. 
+A: The very first thing that comes to mind when reading this article is the fact that planes and airports use so many various forms of technology. If there was a bug that went undiscovered, it is possible that planes could crash/have difficulty landing. Providing clean, secure code is highly important.
 
 > Would you consider the following to be clean code? Explain why or why not. If not, refactor the code.
 
-A: I would _not_ consider the code provided to be clean. Too many comments, poor naming & nesting.  Refactored below: 
+A: I would _not_ consider the code provided to be clean. Too many comments, poor naming & nesting.  Refactored below:
 
 ```
-FUNCTION convertDegrees(temperature, symbol)  
- IF symbol = "F" THEN               
+FUNCTION convertDegrees(temperature, symbol)
+ IF symbol = "F" THEN
   SET temperatureResult to (temperature−32) * (5/9) //convert degrees fahrenheit to celsius
-  PRINT temperatureResult 
+  PRINT temperatureResult
  ELSE IF symbol = "C" THEN          // If y not equal to "F", check if equal to "C"
   SET temperatureResult to temperature * 1.8000 + 32.00   // convert degrees celsius to fahrenheit
-  PRINT temperatureResult                       
+  PRINT temperatureResult
  END IF
-END FUNCTION 
+END FUNCTION
 ```
 
 >Would you consider the following to be clean code? Explain why or why not. If not, refactor the code.
 
-A: Yes, I would consider this to be clean code. There are no comments because they are not necessary as it is self-documenting code.  It is nested well and is easy to read. 
+A: Yes, I would consider this to be clean code. There are no comments because they are not necessary as it is self-documenting code.  It is nested well and is easy to read.
 
 >Using pseudocode, refactor the code for the following examples using the principles you have learned in this checkpoint.
 
 a. The following function prints the subtotal of a customer's transaction and receives payment accordingly.
+```
+FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
+   PRINT "Your total due is: " + subTotal * discountRate + (subTotal * tax)
 
+   IF paymentType = 'CASH' THEN
+       CALL getPayment RETURNING amount
+       PRINT "Change due: " + amount - subTotal * discountRate + (subTotal * tax)
+   ELSE IF paymentType = 'CREDIT CARD' THEN
+       CALL getPayment RETURNING amount
+       PRINT "Your credit card has been charged: " + subTotal * discountRate + (subTotal * tax)
+   END IF
+END FUNCTION
+```
 
+Refactored Code Below:
+
+```
+FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
+   PRINT "Your total due is: " + subTotal * discountRate + (subTotal * tax)
+
+FUNCTION getPaymentType (paymentType)
+   IF paymentType = 'CASH' THEN
+       CALL getPayment RETURNING amount
+       PRINT "Change due: " + amount - subTotal * discountRate + (subTotal * tax)
+   ELSE IF paymentType = 'CREDIT CARD' THEN
+       CALL getPayment RETURNING amount
+       PRINT "Your credit card has been charged: " + subTotal * discountRate + (subTotal * tax)
+   END IF
+END FUNCTION
+```
+b. The following function checks out a book if there are no issues with the guest's account.
+
+```
+FUNCTION checkoutBook(book, guest)
+ IF guest.accountActive THEN
+     IF NOT(guest.hasOverdueBooks) THEN
+         IF guest.outstandingFees = 0 THEN
+           APPEND book to guest.books
+           SET book.status to "Checked Out"
+           PRINT "Your books have been issued."
+         END IF
+     END IF
+ ELSE
+     PRINT "Unable to check out book."
+ END IF
+END FUNCTION
+```
+
+Refactored Code Below:
+
+```
+FUNCTION checkoutBook(book, guest)
+ IF guest.accountActive THEN IF NOT(guest.hasOverdueBooks) AND guest.outstandingFees = 0 THEN APPEND book to guest.books AND SET book.status to "Checked Out"
+      PRINT "Your books have been issued."
+         END IF
+     END IF
+ ELSE
+     PRINT "Unable to check out book."
+ END IF
+END FUNCTION
+```
+
+c. The following class is a code snippet that should support the transactions a customer can perform at an ATM.
+
+```
+CLASS BankAccount
+
+ FUNCTION displayBalance
+    PRINT balance
+ END FUNCTION
+
+ FUNCTION deposit(amount)
+    SET balance to balance + amount
+ END FUNCTION
+
+ FUNCTION withdraw(amount)
+     IF balance > amount THEN
+       SET balance to balance - amount
+     END
+ END FUNCTION
+
+ FUNCTION creditCardOffer
+     IF NOT(customer.hasCreditCard) THEN
+         CALL offerCreditCard
+     END
+ END FUNCTION
+
+ FUNCTION checkStatus
+     IF NOT(customer.hasCheckingAccount) THEN
+         CALL offerCheckingAccount
+     END
+ END FUNCTION
+
+ ....
+ ....
+ ....
+
+END
+```
+
+Refactored Code Below:
+
+```
