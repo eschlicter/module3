@@ -9,6 +9,17 @@ A: Clean code is code that is easy to understand (using comments only when neces
 A: The very first thing that comes to mind when reading this article is the fact that planes and airports use so many various forms of technology. If there was a bug that went undiscovered, it is possible that planes could crash/have difficulty landing. Providing clean, secure code is highly important.
 
 > Would you consider the following to be clean code? Explain why or why not. If not, refactor the code.
+```
+FUNCTION do(x, y)               // Creating a new function
+ IF y = "F" THEN               // Check if y is equal "F"
+ SET z to (x−32) * (5/9)       // Formula to convert degrees fahrenheit to celsius
+ PRINT z                       // Print result
+ ELSE IF y = "C" THEN          // If y not equal to "F", check if equal to "C"
+ SET z to x * 1.8000 + 32.00   // Formula to convert degrees celsius to fahrenheit
+ PRINT z                       // Print result
+ END IF
+END FUNCTION
+```
 
 A: I would _not_ consider the code provided to be clean. Too many comments, poor naming & nesting.  Refactored below:
 
@@ -25,6 +36,17 @@ END FUNCTION
 ```
 
 >Would you consider the following to be clean code? Explain why or why not. If not, refactor the code.
+```
+FUNCTION calcPercent(sum, total)
+ IF NOT(total = 0) THEN
+     SET percentage to sum / total * 100
+ ELSE
+   PRINT "Sorry, cannot divide by 0"
+ END IF
+
+ PRINT percentage
+END FUNCTION
+```
 
 A: Yes, I would consider this to be clean code. There are no comments because they are not necessary as it is self-documenting code.  It is nested well and is easy to read.
 
@@ -134,3 +156,46 @@ END
 Refactored Code Below:
 
 ```
+CLASS BankAccount
+
+ FUNCTION displayBalance
+    PRINT balance
+ END FUNCTION
+
+ FUNCTION deposit(amount)
+    SET balance to balance + amount
+ END FUNCTION
+
+ FUNCTION withdraw(amount)
+     IF balance > amount THEN
+       SET balance to balance - amount
+     END
+ END FUNCTION
+END CLASS
+
+CLASS Offers
+
+ FUNCTION creditCardOffer
+     IF NOT(customer.hasCreditCard) THEN
+         CALL offerCreditCard
+     END
+ END FUNCTION
+
+ FUNCTION checkStatus
+     IF NOT(customer.hasCheckingAccount) THEN
+         CALL offerCheckingAccount
+     END
+ END FUNCTION
+END CLASS
+
+ ....
+ ....
+ ....
+
+END
+```
+
+###Programming Questions:
+You may do the following problems in any language of your choice. Use the clean code principles taught in this section while writing the code.
+
+> **Square** Given an array of integers, find out whether the sum of the integers is a perfect square. If it is a perfect square, return the square root, otherwise return the sum.
