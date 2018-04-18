@@ -1,0 +1,69 @@
+###Exercises
+* A line of people at an amusement park ride.
+* The line is composed of members, represented as strings.
+* There is a front to the line, as well as a back.
+* When someone enters the line, place them at the end.
+* People may leave the line whenever they see fit, and those behind them take their place.
+* Given the above real-world information, use an array data structure to code the following solution.
+
+a) Use an array input: ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+b) Insert a new person, "Mary" at the end of the line. In other words, you should insert Mary after Mike.
+c) Find a person in line named "Josh." This function should return the position of 2 in the array, (recall that arrays are 0-based).
+d) Find a person in line named "Emily." What should your function return if it does not find the item in the array?
+e) What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you code this so Melissa appears before Ava?
+f) If Patrick wants to leave the line, how would you delete him from the array?
+```
+class Line {
+  constructor(name){
+    this.names = [];
+  }
+
+  addPerson(name){
+    this.names.push(name);
+  }
+
+  findPerson(name){
+    for (let i = 0; i <= this.names.length; i++){
+      if (this.names[i] === name){
+      console.log ("Found " + name + " at " + i + " place in line");
+      } else {
+          console.log (name + " isn't here!");
+      }
+    }
+  }
+   cutLine(name){
+     this.names.splice(1, 0, name);
+     console.log(this.names);
+   }
+
+   leaveLine(name){
+     const index = this.names.indexOf(name);
+     if (index !== name) {
+     this.names.splice(4, 1);
+     }
+     console.log(this.names);
+   }
+
+}
+let line = new Line();
+
+
+
+line.addPerson("Vivian");
+line.addPerson("Ava");
+line.addPerson("Josh");
+line.addPerson("Patrick");
+line.addPerson("Mike");
+
+line.cutLine("Melissa");
+line.leaveLine("Patrick");
+
+line.findPerson("Josh");
+line.findPerson("Emily");
+```
+
+Provide another real-world example that you can model using a data structure.
+Recently, I've been learning a ton about my heritage. If I wanted to make a family tree, I would be utilizing a data structure.
+
+How would your data structure allow developers to access and manipulate the data?
+Devs could add branches to the tree (in order/where they belong, of course) to add more family members. 
