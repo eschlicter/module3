@@ -28,12 +28,12 @@ ELSE
 A:
 ```
 FUNCTION
-FOR SET iteration number to 1
-IF iteration number is less than or equal to 100
-INCREASE iteration number by one iteration
-END FOR
-PRINT iteration number
-END IF
+FOR SET counter to 0.
+IF counter is less than or equal to 100.
+ADD counter number iteration.
+ENDFOR
+PRINT counter.
+ENDIF
 END FUNCTION
 ```
 
