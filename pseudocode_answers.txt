@@ -28,12 +28,9 @@ ELSE
 A:
 ```
 FUNCTION
-FOR SET counter to 0.
-IF counter is less than or equal to 100.
-ADD counter number iteration.
-ENDFOR
-PRINT counter.
-ENDIF
+SET number to 1
+WHILE number is less than or equal to 100
+	PRINT NUMBER
 END FUNCTION
 ```
 
