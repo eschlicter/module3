@@ -19,29 +19,28 @@ class Line {
   }
 
   addPerson(name){
-    this.names.push(name);
+   this.names.push(name);
   }
 
   findPerson(name){
     for (let i = 0; i <= this.names.length; i++){
       if (this.names[i] === name){
-      console.log ("Found " + name + " at " + i + " place in line");
-      } else {
-          console.log (name + " isn't here!");
+      return "Found " + name + " at " + i + " place in line";
       }
     }
+    return name + " is not here!"
   }
    cutLine(name){
      this.names.splice(1, 0, name);
-     console.log(this.names);
+       return name + " cut in line!";
    }
 
    leaveLine(name){
      const index = this.names.indexOf(name);
      if (index !== name) {
-     this.names.splice(4, 1);
+     this.names.splice(index, 1);
      }
-     console.log(this.names);
+     return name + " left the line"
    }
 
 }
@@ -53,17 +52,17 @@ line.addPerson("Vivian");
 line.addPerson("Ava");
 line.addPerson("Josh");
 line.addPerson("Patrick");
+line.addPerson("Emily");
 line.addPerson("Mike");
-
 line.cutLine("Melissa");
 line.leaveLine("Patrick");
-
 line.findPerson("Josh");
 line.findPerson("Emily");
+
 ```
 
 Provide another real-world example that you can model using a data structure.
 Recently, I've been learning a ton about my heritage. If I wanted to make a family tree, I would be utilizing a data structure.
 
 How would your data structure allow developers to access and manipulate the data?
-Devs could add branches to the tree (in order/where they belong, of course) to add more family members. 
+Devs could add branches to the tree (in order/where they belong, of course) to add more family members.
