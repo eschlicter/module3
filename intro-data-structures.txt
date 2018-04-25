@@ -28,19 +28,18 @@ class Line {
       return "Found " + name + " at " + i + " place in line";
       }
     }
-    return name + " is not here!"
+    return name + " is not here!";
   }
-   cutLine(name){
-     this.names.splice(1, 0, name);
-       return name + " cut in line!";
+   cutLine(cutter, name){
+     this.names.splice(name, 0, cutter);
+       return cutter + " cut in front of " + name;
    }
 
    leaveLine(name){
      const index = this.names.indexOf(name);
-     if (index !== name) {
      this.names.splice(index, 1);
-     }
-     return name + " left the line"
+
+     return name + " left the line";
    }
 
 }
@@ -54,7 +53,7 @@ line.addPerson("Josh");
 line.addPerson("Patrick");
 line.addPerson("Emily");
 line.addPerson("Mike");
-line.cutLine("Melissa");
+line.cutLine("Melissa", "Patrick");
 line.leaveLine("Patrick");
 line.findPerson("Josh");
 line.findPerson("Emily");
