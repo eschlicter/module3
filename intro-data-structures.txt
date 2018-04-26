@@ -31,8 +31,10 @@ class Line {
     return name + " is not here!";
   }
    cutLine(cutter, name){
-     this.names.splice(name, 0, cutter);
+    const index = this.names.indexOf(name);
+     this.names.splice(index, 0, cutter);
        return cutter + " cut in front of " + name;
+
    }
 
    leaveLine(name){
