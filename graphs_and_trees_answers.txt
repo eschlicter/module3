@@ -1,0 +1,101 @@
+>What is a binary tree and what makes it unique to other trees?
+
+A binary tree is a data structure with a root node at the top and grows downwards with child nodes. A binary tree can have up to two children, a left node and a right node.
+
+>What is a heuristic?
+
+Guesses that an algorithm makes to solve a complex problem sooner by sacrificing accuracy.
+
+>What is another problem besides the shortest-path problem that requires the use of heuristics?
+
+I use heuristics in my personal life all the time. Two examples I have are ordering food off a menu and getting dressed. When going out to eat, even if it is a place I've never been before, I generally order the same thing on the menu just because it is easier. When selecting an outfit for the day, I often defer back to one of my "staples" to avoid having to come up with a different combo and to save time.
+
+>What is the difference between a depth-first search and a breadth-first search?
+
+Depth-first search is the process of traveling down a single branch looking for an element. Breadth-first search is the process of searching an entire row (across) of nodes.
+
+>Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+
+An undirected, acyclic, unweighted graph would be a graph in which each node is connected to each other like a two way street, does not assign the cost of travel between nodes, and does not form any loops.
+
+>What kind of graph is a binary search tree?
+
+undirected, acyclic, unweighted
+
+###Programming Questions
+For the following questions, describe in words how you could solve the problem and then do so. Use the depiction of the Binary Search Tree to refer to the examples.
+
+Binary Search Tree Image
+
+>Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
+
+* start at the root & check branches to see if value exists
+* check left branch to see if root value is less than node on the left. If it is true, keep checking left.
+* else, check right side of tree until value is found (or not).
+
+Define contains method on prototype (value)
+  Create variable to hold found node
+  Create recursive function
+    If current node value is equal to value
+      Set variable equal to true
+    else if BST left child is !undefined && value < BST value
+      recurse with current node's left child
+    else if BST right child is !undefined && value > BST value
+      recurse with current node's right child
+  Call recursive function on root node
+  Return variable of found node
+
+```
+BinarySearchTree.prototype.contains = function (value){
+  var doesContain = false;
+  function recurse(bst){
+    if (bst.value === value){
+      doesContain = true;
+    } else if (bst.left !== undefined && value < bst.value) {
+      recurse(bst.left);
+    } else if (bst.right !== undefined && value > bst.value){
+      recurse(bst.right);
+    }
+  }
+  recurse(this);
+  return doesContain;
+  }
+```
+
+>Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
+
+* find lowest common ancestor of two nodes
+* find distance from lowest common ancestor to nodes.
+* add the distances
+
+```
+function findDistance(root, n1, n2){
+  if (root === null || n1 === n2){
+    return 0;
+  }
+  distance.left = findDistance(root.left, n1, n2);
+  distance.right = findDistance(root.right, n1, n2);
+
+  if (distance.left > 0 && distance.right > 0){
+    return distance.left + distance.right;
+  }
+  if (distance.left > 0 && distance.right > 0){
+    return distance.left;
+  }
+  if (distance.right > 0 && root === n1 || n2){
+    return distance.right;
+  }
+  if (distance.left === 0 && distance.right === 0){
+    if(root !== n1 || n2){
+      return 0;
+    }
+    if (root == n1 || n2){
+      return 1;
+    }
+    } else {
+      return max(distance.left, distance.right) + 1;
+    }
+}
+```
