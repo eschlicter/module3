@@ -1,0 +1,66 @@
+>Using proper pseudo-code, describe the following primitive algorithms:
+
+* Making coffee;
+
+FUNCTION makeCoffee
+GET water
+SET water in kettle
+WHILE water is not boiling
+  wait additional 1 minute
+END WHILE
+FOR EACH person wanting coffee
+  add two teaspoons of ground coffee into press
+END FOR EACH
+Pour water into press
+SET brewtime to 0
+WHILE brewtime is < 5 minutes
+  wait 1 minute
+  INCREMENT brewtime by 1
+END WHILE
+FOR EACH person wanting coffee
+  pour coffee into cup
+END FOR EACH
+END FUNCTION
+
+* Washing dishes;
+
+FUNCTION washDishes
+turn on hot water
+squirt soap on scrub daddy
+WHILE there are dirty dishes
+  grab dish
+  run dish under water
+  scrub dish with scrub daddy
+  run dish under water
+  IF dish is still dirty
+    THEN scrub dish with brillo pad
+    run dish under water
+  END IF
+  dry dish
+  put away
+END WHILE
+END FUNCTION
+
+* A choice of your own.
+
+FUNCTION makePBJ
+start with two slices of bread
+WHILE the first slice does not have peanut butter
+  spread peanut butter on one side of first slice
+ENDWHILE
+WHILE the second slice does not have jelly
+  spread jelly on one side of second slice
+ENDWHILE
+place jelly side of second slice against peanut butter side of first slice
+END FUNCTION
+
+
+>As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
+
+1. Many famously successful people credit their productivity to their morning routines which can be seen as algorithms.
+2. Airbnb's algorithm is used to help people find the perfect vacation rentals for their needs. Must consider the guests' needs, listing details, the listers' needs, and more.
+3. Amazon's algorithms tell Amazon’s website how to sort and load product lists for each customer’s experience.
+
+>Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+An efficient algorithm will have a sequence of logical steps, and accomplish the task at hand as quickly as possible.
