@@ -45,7 +45,17 @@ var isPalindrome = function(string){
     return isPalindrome(string.slice(1, stringLength -1) );
   }
   return false;
-};
+}
 ```
 
 >Laura and Xander are going door-to-door around their block looking for their lost cat. Write a recursive algorithm showing one way they can visit every house on their block exactly once.
+```
+function searchBlock(numberOfHouses){
+if (numberOfHouses === 0){
+  return "no houses to check"
+  } else {
+  var housesSearched = numberOfHouses.valueOf();
+  return housesSearched + searchBlock(numberOfHouses);
+  }
+}
+```
