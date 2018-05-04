@@ -5,17 +5,37 @@ Recursion is a function that calls itself/repeats the same steps until complete.
 
 > Name five algorithms that are commonly implemented by recursion.
 
+Binary search, merge sort, quick sort, fibonacci sequence, factorial operation.
+
 
 > When should you use recursion, and when should you avoid recursion? Give examples for each.
+
+Most algorithms cab be recursive OR iterative. Recursive solutions tend to run slower and are more subject to system limitations than iterative solutions. However, iterative solutions can sometimes be harder to implement. Recursion should be used when it makes the code cleaner/more clear.
 
 
 > Compare the recursive and iterative solutions to the three algorithms from the checkpoint (Factorial, Maximum, and Fibonacci). What is similar, and what is different?
 
+All of the iterative solutions use loops and the recursive solutions do not. The recursive solutions call themselves.
 
 > Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
 
+```
+function countCollection(array){
+var count = 0;
+ if(array.length < 1){
+   return 'the array is empty';
+ }else{
+   array.pop();
+   count++
+   }
+   return count + countCollection(array);
+}
+```
+
 
 > A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+
+```
 
 
 >Laura and Xander are going door-to-door around their block looking for their lost cat. Write a recursive algorithm showing one way they can visit every house on their block exactly once.
