@@ -1,10 +1,60 @@
 >Write pseudocode for bubble sort.
-
+```
+function bubbleSort(collection)
+  REPEAT
+    SET swapped to false;
+    FOR i = first index of collection to last index of collection -1
+      IF collection[index] > collection[index + 1] THEN
+      SET temporary to collection[index]
+      SET collection[index] to collection[index + 1]
+      SET collection[index + 1] to temporary
+      SET swapped to true;
+    END IF
+  END FOR
+UNTIL swapped is false
+```
 
 > Write pseudocode for quicksort.
 
+```
+FUNCTION quickSort(collection)
+  SET left to 0
+  SET right to collection - 1
+  IF left < right THEN
+      SET pivot to right
+      SET partitionIndex to partition WITH collection, pivot, left, right
+      CALL quickSort WITH collection, left, partitionIndex - 1;
+      CALL quickSort WITH collection, partitionIndex + 1, right;
+  ELSE
+      RETURN collection
+  END IF
+END function
+
+FUNCTION partition(collection, pivot, left, right)
+    SET pivotValue to collection[pivot]
+    SET partitionIndex to left
+    FOR i = left to right of collection
+        IF collection[i] < pivotValue THEN
+        CALL swap WITH collection, i, partitionIndex
+        END IF
+    END FOR
+    CALL swap WITH collection, right, partitionIndex
+    RETURN partitionIndex
+END function
+
+FUNCTION swap(collection, i, j)
+    SET temporary to collection[i]
+    SET collection[i] to collection[j]
+    SET collection[j] to temporary
+END function
+```
 
 >We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
 
+Bubble sort has a worst-case and average complexity of О(n2), where n is the number of items being sorted. Most practical sorting algorithms have substantially better worst-case or average complexity, often O(n log n).
+
+Quick sort and Merge sort have a time complexity of 0(n log n).
 
 >All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+Bucket sort, or bin sort, is a sorting algorithm that works by distributing the elements of an _array_ into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm, or by recursively applying the bucket sorting algorithm.
