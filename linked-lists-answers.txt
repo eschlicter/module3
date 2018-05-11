@@ -65,27 +65,23 @@ if (!this.head || !this.head.next){
     console.log('No duplicates were found. Empty or single element linked list.');
     return;
   }
+var p1 = null,
+var p2 = null,
+var dup = null;
 
-  var p1;
-  var p2;
-  var p3;
-  var val;
-  p2 = this.head;
+let p1 = head;
 
-  while(p2){
-    val = p2.data;
-    p1 = p2;
-    p3 = p1.next;
-
-  while(p3){
-    if (p3.data === val){
-      p1.next = p3.next;
+while (p1 != null && p1.next != null){
+  p2 = p1;
+  while(p2.next != null){
+    if(p1.data === p2.next.data){
+      dup = p2.next;
+      p2.next = p2.next.next;
     } else {
-    p1 = p3;
+      p2 = p2.next;
     }
-    p3 = p3.next;
   }
-  p2 = p2.next;
+  p1 = p1.next;
   }
 };
 ```
